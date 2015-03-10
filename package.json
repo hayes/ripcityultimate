@@ -1,0 +1,21 @@
+{
+  "name": "rip",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "altr": "^0.4.0-alpha-5",
+    "azure-storage": "^0.4.2",
+    "bell": "^2.0.0",
+    "hapi": "^8.1.0",
+    "hapi-auth-cookie": "^2.0.0",
+    "joi": "^5.1.0",
+    "knex": "^0.7.3",
+    "pg": "^4.2.0"
+  },
+  "devDependencies": {}
+}

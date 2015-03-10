@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rip City Ultimate</title>
+  <link rel="stylesheet" href="/static/css/foundation.css" />
+  <script src="/static/js/vendor/modernizr.js"></script>
+</head>
+<body>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <a href="/">
+            Rip City Ultimate
+          </a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="divider"></li>
+        <li class="{{active === 'roster' ? 'active' : ''}}">
+          <a href="/roster">Roster</a>
+        </li>
+	<li class="divider"></li>
+	<li class="{{active === 'goals' ? 'active' : ''}}">
+	  <a href="/goals">Goals</a>
+	</li>
+        <li class="divider"></li>
+        <li altr-if="account" class="has-dropdown">
+          <a href="#" altr-text="account.name"></a>
+          <ul class="dropdown">
+            <li><a href="/logout">  Log out</a></li>
+          </ul>
+        </li>
+        <li altr-if="!account">
+          <a href="/login">Log in</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+  <div class="row" altr-html="content">
+  </div>
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright Rip City Ultimate.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/static/js/vendor/fastclick.js"></script>
+  <script src="/static/js/foundation.min.js"></script>
+  <script src="/static/js/foundation/foundation.topbar.js"></script>
+  <script>
+    jQuery(document).foundation()
+  </script>
+</body>
+</html>
