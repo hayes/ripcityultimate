@@ -8,7 +8,7 @@ var setup = require('./setup')
 var server = new Hapi.Server({ debug: { request: ['error'] } })
 
 server.connection({
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 8080
 })
 
