@@ -13,7 +13,7 @@
     "azure-storage": "^0.4.2",
     "bell": "^2.0.0",
     "forever": "^0.14.1",
-    "hapi": "^8.1.0",
+    "hapi": "^8.2.0",
     "hapi-auth-cookie": "^2.0.0",
     "joi": "^5.1.0"
   },
