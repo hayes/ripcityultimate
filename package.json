@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "forever index.js"
   },
   "author": "",
   "license": "ISC",
@@ -11,11 +12,19 @@
     "altr": "^0.4.0-alpha-5",
     "azure-storage": "^0.4.2",
     "bell": "^2.0.0",
+    "forever": "^0.14.1",
     "hapi": "^8.1.0",
     "hapi-auth-cookie": "^2.0.0",
-    "joi": "^5.1.0",
-    "knex": "^0.7.3",
-    "pg": "^4.2.0"
+    "joi": "^5.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "description": "Rip City Ultimate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hayes/ripcityultimate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hayes/ripcityultimate/issues"
+  },
+  "homepage": "https://github.com/hayes/ripcityultimate"
 }
