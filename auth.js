@@ -37,27 +37,29 @@ function addAuth(server, options, done) {
         },
         handler: function (request, reply) {
           if(!request.auth.isAuthenticated) return reply.redirect('/')
-          return User.find(
-            'twitter',
-            request.auth.credentials.profile.id,
-            function checked(err, account) {
-              if(account) {
-                request.auth.session.set({account: account})
-                return reply.redirect('/')
-              }
+          return new User().fetch({
+            auth_id: request.auth.credentials.profile.id,
+            auth_provider: 'twitter'
+          }).exec(checked)
 
-              var profile = {
-                provider: 'twitter',
-                token: request.auth.credentials.token,
-                secret: request.auth.credentials.secret,
-                id: request.auth.credentials.profile.id,
-                name: request.auth.credentials.profile.raw.name
-              }
-
-              request.auth.session.set({tempProfile: profile})
-              reply.redirect('/register')
+          function checked(err, account) {
+            if (err) return reply(err)
+            if (account) {
+              request.auth.session.set({account: account})
+              return reply.redirect('/')
             }
-          )
+
+            var profile = {
+              provider: 'twitter',
+              token: request.auth.credentials.token,
+              secret: request.auth.credentials.secret,
+              id: request.auth.credentials.profile.id,
+              name: request.auth.credentials.profile.raw.name
+            }
+
+            request.auth.session.set({tempProfile: profile})
+            reply.redirect('/register')
+          }
         }
       }
     })

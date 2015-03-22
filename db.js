@@ -1,8 +1,5 @@
-var azure = require('azure-storage')
-var env = require('./env')
+var settings = require('./knexfile')
+var bookshelf = require('bookshelf')
+var knex = require('knex')
 
-module.exports = azure.createTableService(env.STORAGE_ACCOUNT, env.STORAGE_KEY)
-
-module.exports.createTableIfNotExists('users', function created(err) {
-  if (err) throw err
-})
+module.exports = bookshelf(knex(settings.development))

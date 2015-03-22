@@ -13,6 +13,6 @@ server.connection({
 })
 
 setup(server, [auth, register, templates, routes], function ready(err) {
-  if(err) throw err
+  if (err) throw err
   server.start()
 })

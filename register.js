@@ -33,14 +33,14 @@ function setup(server, options, done) {
         auth_token: profile.token,
         auth_secret: profile.secret,
         auth_id: profile.id,
-        meta: {},
+        meta: {}
       }
 
-      User.create(account, function created(err) {
+      new User(account).save().exec(function created(err) {
         if (err) {
           request.auth.session.set({
             tempProfile: profile,
-            errors: err.toString(),
+            errors: err.toString()
           })
           return reply(err)
         }
