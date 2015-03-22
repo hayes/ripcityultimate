@@ -1,13 +1,6 @@
 var joi = require('joi')
-var db = require('../db')
 
-module.exports = db.Model.extend({
-  tableName: 'users',
-  hasTimestamps: ['created_at', 'updated_at'],
-  initialize: function initialize() {
-    this.on('saving', validate)
-  }
-})
+module.exports = init
 
 var accountSchema = joi.object().keys({
   name: joi.string().min(1).max(255).trim(),
@@ -33,4 +26,14 @@ var accountSchema = joi.object().keys({
 
 function validate() {
   joi.assert(this.toJSON(), accountSchema)
+}
+
+function init(model) {
+  return model.extend({
+    tableName: 'users',
+    hasTimestamps: ['created_at', 'updated_at'],
+    initialize: function initialize() {
+      this.on('saving', validate)
+    }
+  })
 }

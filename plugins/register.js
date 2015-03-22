@@ -1,9 +1,8 @@
-var User = require('./models/user')
-
 module.exports = setup
-module.exports.attributes = {name: 'register'}
 
 function setup(server, options, done) {
+  var User = server.plugins.bookshelf.model('User')
+
   server.route({
     method: 'GET',
     path: '/register',

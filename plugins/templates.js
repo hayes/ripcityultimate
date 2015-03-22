@@ -8,15 +8,15 @@ function setup(server, options, done) {
     engines: {
         html: {
           compileMode: 'sync',
-          module: new Engine(),
+          module: new Engine()
         }
     },
     relativeTo: __dirname,
-    path: './',
+    path: '../templates/',
     layout: true,
-    partialsPath: './partials',
-    helpersPath: './helpers',
-    isCached: false,
+    partialsPath: '../templates/partials',
+    helpersPath: '../templates/helpers',
+    isCached: false
   })
   done()
 }
@@ -34,7 +34,7 @@ function compile(template) {
       helpers: this.helpers
     })
   } catch(err) {
-    return function() {
+    return function onError() {
       return err.stack
     }
   }

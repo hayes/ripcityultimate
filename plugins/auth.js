@@ -1,13 +1,12 @@
 var bell = require('bell')
-var User = require('./models/user')
-var env = require('./env')
+var env = require('../env')
 
 module.exports = addAuth
-module.exports.attributes = {name: 'auth'}
 
 function addAuth(server, options, done) {
-  server.register([require('hapi-auth-cookie'), bell], function (err) {
-    if(err) {
+  var User = server.plugins.bookshelf.model('User')
+  server.register([require('hapi-auth-cookie'), bell], function registered(err) {
+    if (err) {
       throw err
     }
 
@@ -33,10 +32,10 @@ function addAuth(server, options, done) {
       config: {
         auth: {
           strategy: 'twitter',
-          mode: 'try',
+          mode: 'try'
         },
-        handler: function (request, reply) {
-          if(!request.auth.isAuthenticated) return reply.redirect('/')
+        handler: function handler(request, reply) {
+          if (!request.auth.isAuthenticated) return reply.redirect('/')
           return new User().fetch({
             auth_id: request.auth.credentials.profile.id,
             auth_provider: 'twitter'
